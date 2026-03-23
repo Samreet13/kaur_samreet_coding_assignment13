@@ -1,263 +1,101 @@
-# UI Garden: Coding Assignment 12
+# UI Component Library with Build Checks (Assignment 13)
 
-### WEBD-3012 | React Component Library
+## Student Information
 
-Built by: Samreet Kaur
-
----
-
-## 📌 Project Overview
-
-This project is a reusable **UI Component Library** built using:
-
-- React 18
-- TypeScript
-- Vite
-- Styled-Components
-- Storybook
-- Jest & Testing Library
-- Docker (Production build)
-
-The goal of this assignment was to design, test, and deploy a fully functional component toolkit that demonstrates responsive design, disabled states, Storybook controls, and containerized production deployment.
+**Name:** Samreet Kaur
+**Course:** Full-Stack Web Development
+**Assignment:** Coding Assignment 13 – UI Component Library with Build Checks
 
 ---
 
-## ✅ Components Included
+## Project Overview
 
-The library contains the following reusable components:
+This project builds on Assignment 12, where a reusable React UI Component Library was created.
 
-- Button
-- Label
-- Text
-- Table
-- TableHeader
-- TableRow
-- TableCell
-- TableFooter
-- Dropdown
-- RadioButton
-- Img
-- HeroImage
-- Card
+In this assignment, the focus is on improving **code quality, consistency, and deployment reliability** by integrating automated checks and workflows into the development process.
 
-Each component follows the required structure:
-
-```
-ComponentName/
- ├── ComponentName.tsx
- ├── ComponentName.types.tsx
- ├── ComponentName.stories.tsx
- ├── ComponentName.tests.tsx
- └── index.ts
-```
+The goal is to ensure that only clean, properly formatted, and tested code is committed and deployed.
 
 ---
 
-## 🎨 Styling Approach
+## Features Implemented
 
-All components are styled using **Styled-Components**.
-
-Design characteristics:
-
-- Soft coral accent theme
-- Clean flat UI with subtle shadows
-- Rounded corners
-- Responsive layout
-- Clear disabled states
-- Accessible cursor feedback
-
-When a component is disabled:
-
-- Background color changes to grey
-- Cursor becomes `not-allowed`
-- Opacity is reduced (where required)
-- Interaction is disabled
+- Pre-commit hooks using **Husky**
+- Code formatting using **Prettier**
+- Code quality checks using **ESLint**
+- Automated unit testing using **Jest**
+- Continuous Integration using **GitHub Actions**
+- Production deployment using **Docker**
 
 ---
 
-## 🧪 Testing
+## Code Quality Workflow
 
-Each component includes at least:
+Before any code is committed:
 
-1. A test to confirm it renders and is visible.
-2. A test verifying styling changes when the component is disabled.
+1. ESLint checks for coding errors and bad practices
+2. Prettier verifies consistent formatting
+3. Jest runs all unit tests
 
-Testing tools used:
+If any of these fail, the commit is blocked automatically.
 
-- Jest
-- @testing-library/react
-- jest-styled-components
+---
 
-Run tests using:
+## Continuous Integration (CI/CD)
+
+A GitHub Actions workflow is configured to run on every push to the main branch.
+
+The pipeline performs:
+
+- Dependency installation
+- Lint checks
+- Formatting checks
+- Test execution
+
+This ensures code quality even if local checks are skipped.
+
+---
+
+## How to Run the Project (Docker)
+
+### Step 1: Build Docker Image
 
 ```bash
-npm test
+docker build -t kaur_samreet_coding_assignment13 .
 ```
 
----
-
-## 📖 Storybook
-
-Storybook is included to document and preview all components.
-
-Features:
-
-- Interactive Controls
-- Default state
-- Disabled state
-- Adjustable props (text, color, etc.)
-
-To run Storybook:
+### Step 2: Run Container
 
 ```bash
-npm run storybook
+docker run -d -p 8018:80 --name kaur_samreet_coding_assignment13 kaur_samreet_coding_assignment13
 ```
 
-Then open:
+### Step 3: Open in Browser
 
 ```
-http://localhost:6006
-```
-
----
-
-## 🚀 Running the Project Locally
-
-### 1️⃣ Install Dependencies
-
-```bash
-npm install --legacy-peer-deps
-```
-
-### 2️⃣ Run Development Server
-
-```bash
-npm run dev
-```
-
-Open:
-
-```
-http://localhost:5173
+http://localhost:8018
 ```
 
 ---
 
-## 🐳 Docker Deployment (Production Build)
+## Project Structure
 
-This project includes a multi-stage Dockerfile that builds and serves a production-ready version using Nginx.
-
-### 🔨 Build Docker Image
-
-```bash
-docker build -t kaur_samreet_coding_assignment12 .
-```
-
-### ▶️ Run Container
-
-```bash
-docker run -d --name kaur_samreet_coding_assignment12 -p 8083:8083 kaur_samreet_coding_assignment12
-```
-
-### 🌐 Open in Browser
-
-```c
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-http://localhost:8083
-```
-
-### 🛑 Stop & Remove Container
-
-```bash
-docker stop kaur_samreet_coding_assignment12
-docker rm kaur_samreet_coding_assignment12
-```
+- `src/` → React components
+- `.husky/` → Git hooks for pre-commit checks
+- `.github/workflows/` → CI/CD pipeline
+- `Dockerfile` → Production build setup
+- `nginx.conf` → Web server configuration
 
 ---
 
-## 📂 Project Structure
+## Conclusion
 
-```
-kaur_samreet_ui_garden/
-│
-├── .storybook/
-├── src/
-│   ├── components/
-│   │   ├── Button/
-│   │   ├── Card/
-│   │   ├── Dropdown/
-│   │   ├── HeroImage/
-│   │   ├── Img/
-│   │   ├── Label/
-│   │   ├── RadioButton/
-│   │   ├── Table/
-│   │   └── Text/
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── setupTests.ts
-│
-├── Dockerfile
-├── nginx.conf
-├── vite.config.ts
-├── tsconfig.json
-├── package.json
-└── README.md
-```
+This project demonstrates how modern development practices can improve code reliability and maintainability.
+
+By integrating automated checks, CI/CD pipelines, and containerization, the application ensures consistent quality and smooth deployment.
 
 ---
 
-## 🧠 What This Project Demonstrates
+## GitHub Repository
 
-- Component-driven development
-- Responsive UI design
-- Styled-components usage
-- Controlled props & disabled states
-- Automated testing
-- Storybook documentation
-- Docker production deployment
-- GitHub version control workflow
-
----
-
-## 📎 GitHub Repository
-
-Project repository:
-
-```
-https://github.com/Samreet13/kaur_samreet_coding_assignment12
-```
-
----
-
-## 🏁 Conclusion
-
-This assignment demonstrates the ability to:
-
-- Design reusable UI components
-- Validate functionality through testing
-- Document components using Storybook
-- Build and deploy a production-ready application using Docker
-- Follow a structured development workflow
-
-All requirements outlined in the assignment rubric have been implemented.
-
----
-
-⭐ End of README
+https://github.com/Samreet13/kaur_samreet_coding_assignment13
